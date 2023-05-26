@@ -52,18 +52,6 @@ function Login() {
                     <Link className="navbar-brand" to="/">
                         SpotWise Parking Management System
                     </Link>
-                    <ul className="navbar-nav">
-                        <li className="nav-item">
-                        <Link className="nav-link" to="/signup">
-                            Registration
-                        </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/">
-                                Login
-                            </Link>
-                        </li>
-                    </ul>
                 </div>
             </nav>
             <MDBContainer fluid>
