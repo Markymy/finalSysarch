@@ -1,3 +1,5 @@
+// Login.jsx
+
 import 'bootstrap/dist/css/bootstrap.css';
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
@@ -20,6 +22,8 @@ function Login() {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [vehicle, setVehicle] = useState('');
+    const [plate, setPlate] = useState('');
 
     async function submit(e) {
         e.preventDefault();
@@ -27,7 +31,9 @@ function Login() {
         try {
             await axios.post("http://localhost:8000/signup", {
                 email,
-                password
+                password,
+                vehicle,
+                plate
             })
             .then(res => {
                 if (res.data === "exist") {
@@ -81,8 +87,24 @@ function Login() {
                                     />
                                 </div>
                                 <div className="d-flex flex-row align-items-center mb-4">
-                                    <MDBIcon fas icon="key me-3" size="lg" />
-                                    <MDBInput label="Repeat your password" id="form4" type="password" />
+                                    <MDBIcon fas icon="lock me-3" size="lg" />
+                                    <MDBInput
+                                        label="Vehicle"
+                                        id="form4"
+                                        type="text"
+                                        value={vehicle}
+                                        onChange={(e) => setVehicle(e.target.value)}
+                                    />
+                                </div>
+                                <div className="d-flex flex-row align-items-center mb-4">
+                                    <MDBIcon fas icon="lock me-3" size="lg" />
+                                    <MDBInput
+                                        label="Plate Number"
+                                        id="form5"
+                                        type="text"
+                                        value={plate}
+                                        onChange={(e) => setPlate(e.target.value)}
+                                    />
                                 </div>
                                 <div className="mb-4">
                                     <MDBCheckbox name="flexCheck" value="" id="flexCheckDefault" label="Accept terms and conditions" />

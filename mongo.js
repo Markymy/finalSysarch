@@ -16,6 +16,14 @@ const newSchema=new mongoose.Schema({
     password:{
         type:String,
         required:true
+    },
+    vehicle:{
+        type:String,
+        required:true
+    },
+    plate:{
+        type:String,
+        required:true
     }
 })
 
