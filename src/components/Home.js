@@ -9,20 +9,22 @@ import {
   MDBCardBody,
   MDBCardImage,
 } from "mdb-react-ui-kit";
-
+import Profile from "./Profile";
 
 function Home() {
   const location = useLocation();
   const navigate = useNavigate();
 
-
   const handleButtonClick = () => {
     navigate("/");
   };
 
+  const handleOtherPage = () => {
+    navigate("/profile");
+  };
+
   const backgroundStyle = {
-    backgroundImage:
-      'url("https://wallpaperaccess.com/full/842785.jpg")',
+    backgroundImage: 'url("https://wallpaperaccess.com/full/842785.jpg")',
     backgroundSize: "cover",
     backgroundPosition: "center",
     height: "100vh",
@@ -49,7 +51,7 @@ function Home() {
                   className="order-2 order-lg-1 d-flex flex-column align-items-center"
                 >
                   <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
-                    We are glad that you are here, {location.state.id}.
+                    We are glad that you are here, {location.state?.id || ""}.
                   </p>
                   <br></br>
                   <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
@@ -62,6 +64,9 @@ function Home() {
                     >
                       Logout
                     </button>
+                    <button 
+                     className="btn btn-primary my-2"
+                    onClick={handleOtherPage}>Change Password</button>
                   </form>
                 </MDBCol>
                 <MDBCol
