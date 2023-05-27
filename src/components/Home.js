@@ -66,8 +66,9 @@ function Home() {
                     </button>
                     <button 
                      className="btn btn-primary my-2"
-                    onClick={handleOtherPage}>Change Password</button>
+                    onClick={handleOtherPage}>Profile</button>
                   </form>
+                  
                 </MDBCol>
                 <MDBCol
                   md="10"

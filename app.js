@@ -49,6 +49,26 @@ app.post('/users/change-password', cors(), async (req, res) => {
   }
 });
 
+app.delete('/users/:id', cors(), async (req, res) => {
+  const userId = req.params.id;
+
+  try {
+    const user = await collection.findById(userId);
+
+    if (!user) {
+      res.json({ success: false, message: 'User not found' });
+      return;
+    }
+
+    await user.remove();
+    res.json({ success: true, message: 'User deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting user:', error);
+    res.status(500).json({ success: false, message: 'Failed to delete user' });
+  }
+});
+
+
 app.get('/', cors(), (req, res) => {});
 
 app.post('/', async (req, res) => {

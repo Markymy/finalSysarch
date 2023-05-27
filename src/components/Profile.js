@@ -1,57 +1,64 @@
-import React, { useState } from 'react';
+import { useNavigate, Link } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const ChangePasswordPage = () => {
-  const [currentPassword, setCurrentPassword] = useState('');
-  const [newPassword, setNewPassword] = useState('');
+const UpdateUserForm = () => {
+  const navigate = useNavigate();
+  const [user, setUser] = useState({ id: '', name: '', email: '' });
 
-  const handleChangePassword = async (e) => {
+  useEffect(() => {
+    // Fetch user data from the server
+    const fetchUser = async () => {
+      try {
+        const response = await axios.get('/users/1'); // Replace with the appropriate API endpoint for fetching a user by ID
+        setUser(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchUser();
+  }, []);
+  
+  const handleChange = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
+  };
+  const handleOtherPage = () => {
+    navigate("/deletePage");
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('/users/change-password', {
-        password: currentPassword,
-        newPassword: newPassword,
-      });
-
-      // Handle the response as needed
-      console.log(response.data);
+      await axios.put(`/users/${user.id}`, user); // Replace with the appropriate API endpoint for updating a user by ID
+      console.log('User updated successfully');
     } catch (error) {
-      // Handle errors
       console.error(error);
     }
   };
 
   return (
     <div>
-      <h1>Change Password</h1>
-      <form onSubmit={handleChangePassword}>
-        <label htmlFor="currentPassword">Current Password:</label>
-        <input
-          type="password"
-          id="currentPassword"
-          name="currentPassword"
-          value={currentPassword}
-          onChange={(e) => setCurrentPassword(e.target.value)}
-          required
-        />
+      <h1>Update User</h1>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="name">Name:</label>
+        <input type="text" id="name" name="name" value={user.name} onChange={handleChange} />
         <br />
 
-        <label htmlFor="newPassword">New Password:</label>
-        <input
-          type="password"
-          id="newPassword"
-          name="newPassword"
-          value={newPassword}
-          onChange={(e) => setNewPassword(e.target.value)}
-          required
-        />
+        <label htmlFor="email">Email:</label>
+        <input type="email" id="email" name="email" value={user.email} onChange={handleChange} />
         <br />
 
-        <button type="submit">Change Password</button>
+        <button className="btn btn-primary my-2" onClick={handleOtherPage}>
+          Delete User
+        </button>
+        <button className="btn btn-primary my-2" type="submit">
+          Update User
+        </button>
       </form>
     </div>
   );
 };
 
-export default ChangePasswordPage;
+export default UpdateUserForm;
