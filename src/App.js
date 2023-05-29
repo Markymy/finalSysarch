@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState } from 'react';
 import Profile from "./components/Profile"
 import DeleteRecord from "./components/DeleteRecord"
+import ChangePassword from "./components/ChangePassword"
+
 
 function App() {
   return (
@@ -16,6 +18,7 @@ function App() {
           <Route path="/home" element={<Home/>}/>
           <Route path="/profile" element={<Profile/>}/>
           <Route path="/delete" element={<DeleteRecord/>}/>
+          <Route path="/change" element={<ChangePassword/>}/>
         </Routes>
       </Router>
     </div>

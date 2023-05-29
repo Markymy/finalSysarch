@@ -26,6 +26,9 @@ function Home() {
     navigate("/delete");
   };
 
+  const handleUpdate = () => {
+    navigate("/change");
+  };
   const backgroundStyle = {
     backgroundImage: 'url("https://i.nextmedia.com.au/News/crn-14_carpark_iStock-177136206.jpg")',
     backgroundSize: "cover",
@@ -73,6 +76,9 @@ function Home() {
                     <button 
                      className="btn btn-primary my-2"
                     onClick={handleDelete}>Delete</button>
+                    <button 
+                     className="btn btn-primary my-2"
+                    onClick={handleUpdate}>update</button>
                   </form>
                   
                 </MDBCol>

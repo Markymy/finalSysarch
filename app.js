@@ -24,6 +24,25 @@ app.delete("/delete/:email", async (req, res) => {
   }
 });
 
+app.put("/update/:email", async (req, res) => {
+  try {
+    const { email } = req.params;
+    const { password } = req.body;
+
+    const updatedUser = await User.findOneAndUpdate(
+      { email: email },
+      { $set: { password: password } },
+      { new: true }
+    );
+
+    if (!updatedUser) return res.status(404).send("User not found");
+
+    res.send(updatedUser);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
+
 
 app.get('/', cors(), (req, res) => {});
 app.post('/', async (req, res) => {
