@@ -24,7 +24,7 @@ function Home() {
   };
 
   const backgroundStyle = {
-    backgroundImage: 'url("https://wallpaperaccess.com/full/842785.jpg")',
+    backgroundImage: 'url("https://i.nextmedia.com.au/News/crn-14_carpark_iStock-177136206.jpg")',
     backgroundSize: "cover",
     backgroundPosition: "center",
     height: "100vh",
@@ -42,7 +42,7 @@ function Home() {
           </div>
         </nav>
         <MDBContainer fluid className="d-flex flex-column align-items-center justify-content-center">
-          <MDBCard className="text-black m-5" style={{ borderRadius: "25px" }}>
+          <MDBCard className="text-black m-5" style={{ borderRadius: "25px", opacity: 0.9 }}>
             <MDBCardBody>
               <MDBRow>
                 <MDBCol
@@ -50,11 +50,11 @@ function Home() {
                   lg="6"
                   className="order-2 order-lg-1 d-flex flex-column align-items-center"
                 >
-                  <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
+                  <p className="text-center h1 fw-plain mb-5 mx-1 mx-md-4 mt-4">
                     We are glad that you are here, {location.state?.id || ""}.
                   </p>
                   <br></br>
-                  <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
+                  <p className="text-center h1 fw- mb-5 mx-1 mx-md-4 mt-4">
                     Hope you are doing well. Have a good day!
                   </p>
                   <form className="d-flex flex-column align-items-center">
@@ -76,7 +76,7 @@ function Home() {
                   className="order-1 order-lg-2 d-flex align-items-center"
                 >
                   <MDBCardImage
-                    src="https://cdn.luxe.digital/media/20230103133024/most-expensive-cars-2023-list-luxe-digital.jpg"
+                    src="https://i.nextmedia.com.au/News/crn-14_carpark_iStock-177136206.jpg"
                     fluid
                   />
                 </MDBCol>

@@ -28,7 +28,7 @@ function Login() {
             if (response.data === "exist") {
                 history("/home", { state: { id: email } });
             } else if (response.data === "notexist") {
-                alert("Invalid password");
+                alert("Wrong password");
             }
         } catch (error) {
             alert("Wrong details");
@@ -37,11 +37,20 @@ function Login() {
     }
 
     const backgroundStyle = {
-        backgroundImage: 'url("https://media.wired.com/photos/59545682ce3e5e760d52cc41/master/w_2560%2Cc_limit/390291_P15_0783_a4_rgb.jpg")',
+        backgroundImage: 'url("https://www.motoringresearch.com/wp-content/uploads/2016/07/02_Parking.jpg")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         height: '100vh',
         backgroundColor: 'yellow',
+    };
+    const backgroundPage ={
+        width: "700px",
+        margin: "0 auto",
+        padding: "20px",
+        border: "1px solid #ccc",
+        borderRadius: "4px",
+        backgroundColor: "rgba(255, 255, 255, 0.6)", 
+
     };
 
     const textStyle = {
@@ -51,12 +60,15 @@ function Login() {
 
     return (
         <div style={backgroundStyle}>
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div style={backgroundPage}>
+            <nav className="navbar navbar-expand-lg navbar-dark bg-dark ">
                 <div className="container">
                     <Link className="navbar-brand" to="/">
-                        SpotWise Parking Management System
+                    SpotWise Parking Management System
                     </Link>
                 </div>
+                
+                
             </nav>
 
             <MDBContainer className="p-3 my-5 d-flex flex-column w-50">
@@ -112,6 +124,7 @@ function Login() {
                     </div>
                 </form>
             </MDBContainer>
+        </div>
         </div>
     );
 }

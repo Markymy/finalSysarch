@@ -8,69 +8,31 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-// Connect to MongoDB
-mongoose
-  .connect('mongodb://localhost:27017/your_database_name', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    console.log('MongoDB connected');
-  })
-  .catch((error) => {
-    console.error('Failed to connect to MongoDB:', error);
-  });
 
-app.post('/users/change-password', cors(), async (req, res) => {
-  const { password, newPassword } = req.body;
-
+const uri = 'mongodb+srv://ciednermabale:09205166719W!cked@cluster0.5lga3fu.mongodb.net/users';
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+app.delete('/users', async (req, res) => {
   try {
-    const user = await collection.findOne({ email: req.session.email });
+    await client.connect();
+    const database = client.db('users');
+    const collection = database.collection('collections');
 
-    if (!user) {
-      res.json({ success: false });
-      return;
-    }
+    // Delete all documents in the collection
+    const result = await collection.deleteMany({});
+    console.log(`${result.deletedCount} document(s) deleted`);
 
-    // Check if the current password matches
-    if (user.password !== password) {
-      res.json({ success: false });
-      return;
-    }
-
-    // Update the password in the user document
-    user.password = newPassword;
-    await user.save();
-
-    res.json({ success: true });
+    res.status(200).send('All users deleted successfully');
   } catch (error) {
-    console.error('Error changing password:', error);
-    res.status(500).json({ success: false });
+    console.error(error);
+    res.status(500).send('Error occurred while deleting all users');
+  } finally {
+    await client.close();
   }
 });
 
-app.delete('/users/:id', cors(), async (req, res) => {
-  const userId = req.params.id;
-
-  try {
-    const user = await collection.findById(userId);
-
-    if (!user) {
-      res.json({ success: false, message: 'User not found' });
-      return;
-    }
-
-    await user.remove();
-    res.json({ success: true, message: 'User deleted successfully' });
-  } catch (error) {
-    console.error('Error deleting user:', error);
-    res.status(500).json({ success: false, message: 'Failed to delete user' });
-  }
-});
-
+deleteDocument();
 
 app.get('/', cors(), (req, res) => {});
-
 app.post('/', async (req, res) => {
   const { email, password, vehicle, plate } = req.body;
 
