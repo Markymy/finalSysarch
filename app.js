@@ -8,29 +8,22 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-
-const uri = 'mongodb+srv://ciednermabale:09205166719W!cked@cluster0.5lga3fu.mongodb.net/users';
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-app.delete('/users', async (req, res) => {
+app.delete("/delete/:email", async (req, res) => {
   try {
-    await client.connect();
-    const database = client.db('users');
-    const collection = database.collection('collections');
+    const { email } = req.params;
 
-    // Delete all documents in the collection
-    const result = await collection.deleteMany({});
-    console.log(`${result.deletedCount} document(s) deleted`);
+    const deletedRecord = await collection.findOneAndDelete({ email: email });
 
-    res.status(200).send('All users deleted successfully');
+    if (!deletedRecord) {
+      return res.status(404).send("Record not found");
+    }
+
+    res.send(deletedRecord);
   } catch (error) {
-    console.error(error);
-    res.status(500).send('Error occurred while deleting all users');
-  } finally {
-    await client.close();
+    res.status(500).send(error);
   }
 });
 
-deleteDocument();
 
 app.get('/', cors(), (req, res) => {});
 app.post('/', async (req, res) => {

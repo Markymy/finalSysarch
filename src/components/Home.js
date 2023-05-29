@@ -22,6 +22,9 @@ function Home() {
   const handleOtherPage = () => {
     navigate("/profile");
   };
+  const handleDelete = () => {
+    navigate("/delete");
+  };
 
   const backgroundStyle = {
     backgroundImage: 'url("https://i.nextmedia.com.au/News/crn-14_carpark_iStock-177136206.jpg")',
@@ -67,6 +70,9 @@ function Home() {
                     <button 
                      className="btn btn-primary my-2"
                     onClick={handleOtherPage}>Profile</button>
+                    <button 
+                     className="btn btn-primary my-2"
+                    onClick={handleDelete}>Delete</button>
                   </form>
                   
                 </MDBCol>
