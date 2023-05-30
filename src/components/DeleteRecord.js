@@ -53,24 +53,20 @@ function DeleteRecord() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validate the form input
+
     if (email === '') {
       setErrorMessage('Please enter the email of the record to delete.');
       return;
     }
 
     try {
-      // Call the API to delete the record
       const response = await axios.delete(`http://localhost:8000/delete/${email}`);
 
-      // Reset the form field
       setEmail('');
       setErrorMessage('');
 
-      // Show a success message
       alert('User deleted successfully.');
     } catch (error) {
-      // Handle the error
       console.error('Error deleting record:', error);
       setErrorMessage('Failed to delete record. Please try again.');
     }
