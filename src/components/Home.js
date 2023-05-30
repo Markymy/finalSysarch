@@ -64,23 +64,33 @@ function Home() {
                     Hope you are doing well. Have a good day!
                   </p>
                   <form className="d-flex flex-column align-items-center">
-                    <button
-                      className="btn btn-primary my-2"
-                      onClick={handleButtonClick}
-                    >
-                      Logout
-                    </button>
-                    <button 
-                     className="btn btn-primary my-2"
-                    onClick={handleOtherPage}>Profile</button>
-                    <button 
-                     className="btn btn-primary my-2"
-                    onClick={handleDelete}>Delete</button>
-                    <button 
-                     className="btn btn-primary my-2"
-                    onClick={handleUpdate}>update</button>
+                    <div className="d-flex">
+                      <button
+                        className="btn btn-primary my-2 mx-2"
+                        onClick={handleButtonClick}
+                      >
+                        Logout
+                      </button>
+                      <button 
+                        className="btn btn-primary my-2 mx-2"
+                        onClick={handleOtherPage}
+                      >
+                        Profile
+                      </button>
+                      <button 
+                        className="btn btn-primary my-2 mx-2"
+                        onClick={handleDelete}
+                      >
+                        Delete
+                      </button>
+                      <button 
+                        className="btn btn-primary my-2 mx-2"
+                        onClick={handleUpdate}
+                      >
+                        Update
+                      </button>
+                    </div>
                   </form>
-                  
                 </MDBCol>
                 <MDBCol
                   md="10"

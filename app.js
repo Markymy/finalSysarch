@@ -27,21 +27,22 @@ app.delete("/delete/:email", async (req, res) => {
 app.put("/update/:email", async (req, res) => {
   try {
     const { email } = req.params;
-    const { password } = req.body;
+    const { newPassword } = req.body;
 
-    const updatedUser = await User.findOneAndUpdate(
+    const changePass= await collection.findOneAndUpdate(
       { email: email },
-      { $set: { password: password } },
-      { new: true }
+      { $set: { password: newPassword } },
+      { returnOriginal: false }
     );
 
-    if (!updatedUser) return res.status(404).send("User not found");
-
-    res.send(updatedUser);
+    res.send(changePassword);
   } catch (error) {
-    res.status(500).send(error);
+    console.error(error);
+    res.status(500).send("ERROR OCCURRED");
   }
 });
+
+
 
 
 app.get('/', cors(), (req, res) => {});
