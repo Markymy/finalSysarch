@@ -1,5 +1,3 @@
-// Login.jsx
-
 import 'bootstrap/dist/css/bootstrap.css';
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
@@ -40,10 +38,11 @@ function Login() {
                     alert("User already exists");
                 } else if (res.data === "notexist") {
                     history("/home", { state: { id: email } });
+                    alert("User registered successfully");
                 }
             })
             .catch(e => {
-                alert("wrong details");
+                alert("Wrong details. Please try again.");
                 console.log(e);
             });
         } catch(e) {

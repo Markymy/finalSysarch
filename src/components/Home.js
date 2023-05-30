@@ -19,9 +19,6 @@ function Home() {
     navigate("/");
   };
 
-  const handleOtherPage = () => {
-    navigate("/profile");
-  };
   const handleDelete = () => {
     navigate("/delete");
   };
@@ -70,12 +67,6 @@ function Home() {
                         onClick={handleButtonClick}
                       >
                         Logout
-                      </button>
-                      <button 
-                        className="btn btn-primary my-2 mx-2"
-                        onClick={handleOtherPage}
-                      >
-                        Profile
                       </button>
                       <button 
                         className="btn btn-primary my-2 mx-2"

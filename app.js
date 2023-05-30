@@ -29,18 +29,19 @@ app.put("/update/:email", async (req, res) => {
     const { email } = req.params;
     const { newPassword } = req.body;
 
-    const changePass= await collection.findOneAndUpdate(
+    const updatedRecord = await collection.findOneAndUpdate(
       { email: email },
       { $set: { password: newPassword } },
       { returnOriginal: false }
     );
 
-    res.send(changePassword);
+    res.send(updatedRecord);
   } catch (error) {
     console.error(error);
-    res.status(500).send("ERROR OCCURRED");
+    res.status(500).send("An error occurred while updating the record.");
   }
 });
+
 
 
 
