@@ -42,10 +42,6 @@ app.put("/update/:email", async (req, res) => {
   }
 });
 
-
-
-
-
 app.get('/', cors(), (req, res) => {});
 app.post('/', async (req, res) => {
   const { email, password, vehicle, plate } = req.body;

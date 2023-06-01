@@ -12,7 +12,13 @@ import {
   MDBCardImage,
   MDBInput,
   MDBIcon,
-  MDBCheckbox
+  MDBCheckbox,
+  MDBNavbar,
+  MDBNavbarBrand,
+  MDBNavbarNav,
+  MDBNavbarItem,
+  MDBNavbarLink,
+  MDBFooter
 } from 'mdb-react-ui-kit';
 
 function Login() {
@@ -56,16 +62,20 @@ function Login() {
 
     return (
         <div>
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-                <div className="container">
-                    <Link className="navbar-brand" to="/">
-                        SpotWise Parking Management System
-                    </Link>
-                    <MDBNavbarItem>
-              <MDBNavbarLink onClick={handleDelete}>Delete</MDBNavbarLink>
-            </MDBNavbarItem>
-                </div>
-            </nav>
+            <MDBNavbar expand="lg" light bgColor="white">
+                <MDBContainer>
+                    <MDBNavbarBrand>
+                        <Link className="navbar-brand" to="/">
+                            Yezzir Book Store
+                        </Link>
+                    </MDBNavbarBrand>
+                    <MDBNavbarNav className="justify-content-end">
+                        <MDBNavbarItem>
+                            <MDBNavbarLink href="/">Back</MDBNavbarLink>
+                        </MDBNavbarItem>
+                    </MDBNavbarNav>
+                </MDBContainer>
+            </MDBNavbar>
             <MDBContainer fluid>
                 <MDBCard className="text-black m-5" style={{ borderRadius: '25px' }}>
                     <MDBCardBody>
@@ -143,12 +153,19 @@ function Login() {
                                 </MDBBtn>
                             </MDBCol>
                             <MDBCol md="10" lg="6" className="order-1 order-lg-2 d-flex align-items-center">
-                                <MDBCardImage src="https://cdn.luxe.digital/media/20230103133024/most-expensive-cars-2023-list-luxe-digital.jpg" fluid />
+                                <MDBCardImage src="https://hips.hearstapps.com/hmg-prod/images/jhumpa-lahiri-book-quote-1531936024.jpg?resize=480:*" fluid />
                             </MDBCol>
                         </MDBRow>
                     </MDBCardBody>
                 </MDBCard>
             </MDBContainer>
+            <MDBFooter backgroundColor="light" className="text-center py-3">
+        <MDBContainer>
+          <p className="mb-0">
+            &copy; 2023 Yezzir Book Store. All rights reserved. 
+          </p>
+        </MDBContainer>
+      </MDBFooter>
         </div>
     );
 }

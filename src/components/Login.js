@@ -6,9 +6,14 @@ import {
   MDBInput,
   MDBCheckbox,
   MDBBtn,
-  MDBIcon
+  MDBIcon,
+  MDBFooter
 } from 'mdb-react-ui-kit';
 import axios from 'axios';
+
+const footerStyle = {
+    backgroundColor: "white",
+  };
 
 function Login() {
     const history = useNavigate();
@@ -37,7 +42,7 @@ function Login() {
     }
 
     const backgroundStyle = {
-        backgroundImage: 'url("https://www.motoringresearch.com/wp-content/uploads/2016/07/02_Parking.jpg")',
+        backgroundImage: 'url("https://hips.hearstapps.com/hmg-prod/images/book-quotes-1531945007.jpg?crop=1.00xw:0.753xh;0,0.247xh&resize=1200:*")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         height: '100vh',
@@ -125,6 +130,13 @@ function Login() {
                 </form>
             </MDBContainer>
         </div>
+        <MDBFooter backgroundColor="light" className="text-center py-3">
+        <MDBContainer>
+          <p className="mb-0">
+            &copy; 2023 Yezzir Book Store. All rights reserved. 
+          </p>
+        </MDBContainer>
+      </MDBFooter>
         </div>
     );
 }

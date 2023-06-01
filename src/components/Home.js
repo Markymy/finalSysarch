@@ -15,18 +15,18 @@ import {
   MDBNavbarLink,
   MDBFooter,
 } from "mdb-react-ui-kit";
-import Profile from "./Profile";
+
 
 function Home() {
   const location = useLocation();
   const navigate = useNavigate();
 
   const handleButtonClick = () => {
-    navigate("/login");
+    navigate("/");
   };
   
   const handleButtonSingup = () => {
-    navigate("/signup");
+    navigate("/change");
   };
 
   const handleDelete = () => {
@@ -34,7 +34,7 @@ function Home() {
   };
 
   const handleUpdate = () => {
-    navigate("/change");
+    navigate("/books");
   };
 
   const backgroundStyle = {
@@ -52,13 +52,16 @@ function Home() {
           <MDBNavbarBrand href="/">Yezzir Book Store</MDBNavbarBrand>
           <MDBNavbarNav className="justify-content-end">
             <MDBNavbarItem>
-              <MDBNavbarLink onClick={handleDelete}>Delete</MDBNavbarLink>
+              <MDBNavbarLink onClick={handleDelete}>Delete Account</MDBNavbarLink>
             </MDBNavbarItem>
             <MDBNavbarItem>
-              <MDBNavbarLink onClick={handleUpdate}>Update</MDBNavbarLink>
+            <MDBNavbarLink onClick={handleButtonSingup}>Update Account</MDBNavbarLink>
             </MDBNavbarItem>
             <MDBNavbarItem>
-            <MDBNavbarLink onClick={handleButtonSingup}>Join On Yezzir</MDBNavbarLink>
+              <MDBNavbarLink onClick={handleUpdate}>Books</MDBNavbarLink>
+            </MDBNavbarItem>
+            <MDBNavbarItem>
+              <MDBNavbarLink onClick={handleButtonClick}>Logout</MDBNavbarLink>
             </MDBNavbarItem>
           </MDBNavbarNav>
         </MDBContainer>
