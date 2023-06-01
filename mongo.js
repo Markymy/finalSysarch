@@ -1,5 +1,5 @@
 const mongoose=require("mongoose")
-mongoose.connect("mongodb+srv://ciednermabale:09205166719W!cked@cluster0.5lga3fu.mongodb.net/users")
+mongoose.connect("mongodb+srv://ciednermabale:09205166719W!cked@cluster0.5lga3fu.mongodb.net/books")
 .then(()=>{
     console.log("mongodb connected");
 })
@@ -17,16 +17,23 @@ const newSchema=new mongoose.Schema({
         type:String,
         required:true
     },
-    vehicle:{
+    firstName:{
         type:String,
         required:true
     },
-    plate:{
+    lastName:{
+        type:String,
+        required:true
+    },
+    contact:{
+        type:String,
+        required:true
+    },
+    address:{
         type:String,
         required:true
     }
 })
 
-const collection = mongoose.model("collection",newSchema)
-
+const collection = mongoose.model("agents",newSchema)
 module.exports=collection

@@ -68,13 +68,15 @@ app.post('/', async (req, res) => {
 });
 
 app.post('/signup', async (req, res) => {
-  const { email, password, vehicle, plate } = req.body;
+  const { email, password, firstName, lastName, contact, address} = req.body;
 
   const data = {
     email: email,
     password: password,
-    vehicle: vehicle,
-    plate: plate,
+    firstName: firstName,
+    lastName: lastName,
+    contact: contact,
+    address: address,
   };
 
   try {

@@ -16,12 +16,14 @@ import {
 } from 'mdb-react-ui-kit';
 
 function Login() {
-    const history = useNavigate();
+    const navigate = useNavigate();
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [vehicle, setVehicle] = useState('');
-    const [plate, setPlate] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [contact, setContact] = useState('');
+    const [address, setAddress] = useState('');
 
     async function submit(e) {
         e.preventDefault();
@@ -30,14 +32,16 @@ function Login() {
             await axios.post("http://localhost:8000/signup", {
                 email,
                 password,
-                vehicle,
-                plate
+                firstName,
+                lastName,
+                contact,
+                address,
             })
             .then(res => {
                 if (res.data === "exist") {
                     alert("User already exists");
                 } else if (res.data === "notexist") {
-                    history("/home", { state: { id: email } });
+                    navigate("/signup", { state: { id: email } });
                     alert("User registered successfully");
                 }
             })
@@ -57,6 +61,9 @@ function Login() {
                     <Link className="navbar-brand" to="/">
                         SpotWise Parking Management System
                     </Link>
+                    <MDBNavbarItem>
+              <MDBNavbarLink onClick={handleDelete}>Delete</MDBNavbarLink>
+            </MDBNavbarItem>
                 </div>
             </nav>
             <MDBContainer fluid>
@@ -88,22 +95,45 @@ function Login() {
                                 <div className="d-flex flex-row align-items-center mb-4">
                                     <MDBIcon fas icon="lock me-3" size="lg" />
                                     <MDBInput
-                                        label="Vehicle"
+                                        label="First Name"
                                         id="form4"
                                         type="text"
-                                        value={vehicle}
-                                        onChange={(e) => setVehicle(e.target.value)}
+                                        value={firstName}
+                                        onChange={(e) => setFirstName(e.target.value)}
                                     />
                                 </div>
                                 <div className="d-flex flex-row align-items-center mb-4">
                                     <MDBIcon fas icon="lock me-3" size="lg" />
                                     <MDBInput
-                                        label="Plate Number"
-                                        id="form5"
+                                        label="Last Name"
+                                        id="form6"
                                         type="text"
-                                        value={plate}
-                                        onChange={(e) => setPlate(e.target.value)}
+                                        value={lastName}
+                                        onChange={(e) => setLastName(e.target.value)}
                                     />
+                                </div>
+                                <div className="d-flex flex-row align-items-center mb-4">
+                                    <MDBIcon fas icon="envelope me-3" size="lg" />
+                                    <MDBInput
+                                        label="Contact"
+                                        id="form7"
+                                        type="text"
+                                        value={contact}
+                                        onChange={(e) => setContact(e.target.value)}
+                                    />
+                                </div>
+                                <div className="d-flex flex-row align-items-center mb-4">
+                                    <MDBIcon fas icon="envelope me-3" size="lg" />
+                                    <MDBInput
+                                        label="Address"
+                                        id="form8"
+                                        type="text"
+                                        value={address}
+                                        onChange={(e) => setAddress(e.target.value)}
+                                    />
+                                </div>
+                                <div className="d-flex flex-row align-items-center mb-4">
+                                    <MDBIcon fas icon="envelope me-3" size="lg" />
                                 </div>
                                 <div className="mb-4">
                                     <MDBCheckbox name="flexCheck" value="" id="flexCheckDefault" label="Accept terms and conditions" />

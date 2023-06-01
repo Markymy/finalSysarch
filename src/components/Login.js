@@ -63,8 +63,8 @@ function Login() {
             <div style={backgroundPage}>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark ">
                 <div className="container">
-                    <Link className="navbar-brand" to="/" align= "center">
-                    SpotWise Parking Management System
+                    <Link className="navbar-brand" to="/login" align= "center">
+                    Yezzir Book Store
                     </Link>
                 </div>
                 
