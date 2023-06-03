@@ -9,6 +9,10 @@ import {
 import axios from "axios";
 
 function Login() {
+  const navigate = useNavigate();
+  const handleButtonClick = () => {
+    navigate("/signup");
+  };
   const history = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -78,6 +82,9 @@ function Login() {
 
           <MDBBtn className="w-100 mb-4" onClick={submit}>
             Sign in
+          </MDBBtn>
+          <MDBBtn className="w-100 mb-4" onClick={handleButtonClick}>
+            Register
           </MDBBtn>
 
           <div className="text-center">
