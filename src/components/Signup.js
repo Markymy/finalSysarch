@@ -66,7 +66,7 @@ function Login() {
                 <MDBContainer>
                     <MDBNavbarBrand>
                         <Link className="navbar-brand" to="/">
-                            Yezzir Book Store
+                            Marky Job Search
                         </Link>
                     </MDBNavbarBrand>
                     <MDBNavbarNav className="justify-content-end">
@@ -162,7 +162,7 @@ function Login() {
             <MDBFooter backgroundColor="light" className="text-center py-3">
         <MDBContainer>
           <p className="mb-0">
-            &copy; 2023 Yezzir Book Store. All rights reserved. 
+            &copy; 2023 Marky Job Search. All rights reserved. 
           </p>
         </MDBContainer>
       </MDBFooter>

@@ -24,21 +24,13 @@ function Home() {
   const handleButtonClick = () => {
     navigate("/");
   };
-  
-  const handleButtonSingup = () => {
-    navigate("/change");
-  };
 
-  const handleDelete = () => {
-    navigate("/delete");
-  };
-
-  const handleUpdate = () => {
-    navigate("/books");
+  const handleSearch = () => {
+    navigate("/job");
   };
 
   const backgroundStyle = {
-    backgroundImage: 'url("https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8OHx8fGVufDB8fHx8fA%3D%3D&w=1000&q=80")',
+    backgroundImage: 'url("https://outwiths.com/uploads/resource/43/medium/searching-for-a-new-job-1080x720_medium-1080x720.jpg")',
     backgroundSize: "cover",
     backgroundPosition: "center",
     height: "calc(100vh - 60px)", 
@@ -49,16 +41,9 @@ function Home() {
     <div className="homepage">
       <MDBNavbar expand="lg" dark bgColor="dark">
         <MDBContainer>
-          <MDBNavbarBrand href="/">Yezzir Book Store</MDBNavbarBrand>
           <MDBNavbarNav className="justify-content-end">
             <MDBNavbarItem>
-              <MDBNavbarLink onClick={handleDelete}>Delete Account</MDBNavbarLink>
-            </MDBNavbarItem>
-            <MDBNavbarItem>
-            <MDBNavbarLink onClick={handleButtonSingup}>Update Account</MDBNavbarLink>
-            </MDBNavbarItem>
-            <MDBNavbarItem>
-              <MDBNavbarLink onClick={handleUpdate}>Books</MDBNavbarLink>
+              <MDBNavbarLink onClick={handleSearch}>Search Job</MDBNavbarLink>
             </MDBNavbarItem>
             <MDBNavbarItem>
               <MDBNavbarLink onClick={handleButtonClick}>Logout</MDBNavbarLink>
@@ -69,14 +54,6 @@ function Home() {
 
       <div style={backgroundStyle}>
       </div>
-
-      <MDBFooter backgroundColor="light" className="text-center py-3">
-        <MDBContainer>
-          <p className="mb-0">
-            &copy; 2023 Yezzir Book Store. All rights reserved. 
-          </p>
-        </MDBContainer>
-      </MDBFooter>
     </div>
   );
 }
